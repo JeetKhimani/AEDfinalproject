@@ -62,7 +62,7 @@
                           <Component id="btnManageEnterprise" linkSize="1" max="32767" attributes="0"/>
                           <Component id="btnManageNetwork" linkSize="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="244" max="32767" attributes="0"/>
+                      <EmptySpace pref="289" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -99,7 +99,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnManageAdmin">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manage Enterprise Admin"/>
+                <Property name="text" type="java.lang.String" value="Manage Role"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAdminActionPerformed"/>
