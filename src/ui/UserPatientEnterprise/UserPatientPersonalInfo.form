@@ -35,7 +35,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnNone" min="-2" max="-2" attributes="0"/>
                           <Component id="btnFemale" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMale" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAge" linkSize="1" min="-2" pref="140" max="-2" attributes="0"/>
@@ -84,11 +83,9 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnFemale" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnNone" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="btnPatientPersonalInfoBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="346" max="32767" attributes="0"/>
           </Group>
@@ -155,14 +152,6 @@
           <ComponentRef name="btnGender"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Female"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="btnNone">
-      <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="btnGender"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="None"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSubmit">

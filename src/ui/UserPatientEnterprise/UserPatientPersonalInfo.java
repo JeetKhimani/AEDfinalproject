@@ -40,7 +40,6 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
         lblGender = new javax.swing.JLabel();
         btnMale = new javax.swing.JRadioButton();
         btnFemale = new javax.swing.JRadioButton();
-        btnNone = new javax.swing.JRadioButton();
         btnSubmit = new javax.swing.JButton();
         btnPatientPersonalInfoBack = new javax.swing.JButton();
 
@@ -75,9 +74,6 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
 
-        btnGender.add(btnNone);
-        btnNone.setText("None");
-
         btnSubmit.setText("SUBMIT");
 
         btnPatientPersonalInfoBack.setText("<< Back");
@@ -100,7 +96,6 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSubmit)
-                            .addComponent(btnNone)
                             .addComponent(btnFemale)
                             .addComponent(btnMale)
                             .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,11 +136,9 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
                     .addComponent(btnMale))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFemale)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNone)
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmit)
-                .addGap(30, 30, 30)
+                .addGap(59, 59, 59)
                 .addComponent(btnPatientPersonalInfoBack)
                 .addGap(0, 346, Short.MAX_VALUE))
         );
@@ -167,7 +160,6 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.ButtonGroup btnGender;
     private javax.swing.JRadioButton btnMale;
-    private javax.swing.JRadioButton btnNone;
     private javax.swing.JButton btnPatientPersonalInfoBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel lblAddress;
