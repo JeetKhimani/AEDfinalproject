@@ -9,7 +9,7 @@ package Business.User;
  *
  * @author jeetkhimani
  */
-public class PatientRole {
+public class Patient {
     
     String Name;
     int Age;
