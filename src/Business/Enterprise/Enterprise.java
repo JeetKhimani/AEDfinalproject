@@ -16,6 +16,8 @@ public abstract class Enterprise extends Organization{
     
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    
+    
 
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
