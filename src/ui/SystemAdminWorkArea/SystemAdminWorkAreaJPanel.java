@@ -107,7 +107,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
         );
 
         jSplitPane.setLeftComponent(jPanel1);
@@ -130,6 +130,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageAdmin.setBackground(new java.awt.Color(255, 255, 255));
         btnManageAdmin.setText("Manage Pharmacy");
         btnManageAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +138,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageAdmin1.setBackground(new java.awt.Color(255, 255, 255));
         btnManageAdmin1.setText("Manage Pharmacy Inventory");
         btnManageAdmin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +162,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageNetwork3.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork3.setText("Manage Insurance Office");
         btnManageNetwork3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +170,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageNetwork4.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork4.setText("Manage Billing");
         btnManageNetwork4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +178,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnManageNetwork5.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork5.setText("Manage Laboratory Reports");
         btnManageNetwork5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +225,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageNetwork4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnManageNetwork5)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jSplitPane.setRightComponent(jPanel2);
@@ -244,14 +249,20 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
-        ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel=new ManageEnterpriseAdminJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("manageEnterpriseAdminJPanel",manageEnterpriseAdminJPanel);
+        ManagePharmacyJPanel managePharmacyJPanel=new ManagePharmacyJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("managePharmacyJPanel",managePharmacyJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageAdminActionPerformed
 
     private void btnManageAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdmin1ActionPerformed
         // TODO add your handling code here:
+        
+        ManagePharmacyInventoryJPanel managePharmacyInventoryJPanel=new ManagePharmacyInventoryJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("managePharmacyInventoryJPanel",managePharmacyInventoryJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnManageAdmin1ActionPerformed
 
     private void btnManageNetwork1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetwork1ActionPerformed
@@ -275,14 +286,32 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageNetwork3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetwork3ActionPerformed
         // TODO add your handling code here:
+        
+        ManageInsuranceOfficeJPanel ManageInsuranceOfficeJPanel = new ManageInsuranceOfficeJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("ManageInsuranceOfficeJPanel",ManageInsuranceOfficeJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnManageNetwork3ActionPerformed
 
     private void btnManageNetwork4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetwork4ActionPerformed
         // TODO add your handling code here:
+        ManageBillingJPanel ManageBillingJPanel = new ManageBillingJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("ManageBillingJPanel",ManageBillingJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnManageNetwork4ActionPerformed
 
     private void btnManageNetwork5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetwork5ActionPerformed
         // TODO add your handling code here:
+        
+        ManageLabReportJPanel ManageLabReportJPanel = new ManageLabReportJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("ManageLabReportJPanel",ManageLabReportJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+        
     }//GEN-LAST:event_btnManageNetwork5ActionPerformed
 
 
