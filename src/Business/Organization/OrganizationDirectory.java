@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class OrganizationDirectory {
     
     private ArrayList<Organization> organizationList;
+    //private HospitalDirectory hd;
 
     public OrganizationDirectory() {
         organizationList = new ArrayList();

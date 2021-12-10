@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.User;
+package Business.Role;
 
 /**
  *
  * @author jeetkhimani
  */
-public class PatientRole {
+public class ReceptionRole {
     
 }
