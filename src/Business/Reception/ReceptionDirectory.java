@@ -28,6 +28,4 @@ public class ReceptionDirectory {
         this.ReceptionDirectory = ReceptionDirectory;
     }
     
-    
-    
 }
