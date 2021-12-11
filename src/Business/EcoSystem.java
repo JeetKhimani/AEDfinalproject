@@ -8,6 +8,8 @@ package Business;
 import Business.Billing.BillingDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Insurance.InsuranceDirectory;
+import Business.LabReport.LabReportDirectory;
+import Business.LabTest.LabTestDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Reception.ReceptionDirectory;
@@ -33,6 +35,8 @@ public class EcoSystem extends Organization{
     private PharmacyinventoryDirectory PharmacyinventoryDirectory;
     private InsuranceDirectory InsuranceDirectory;
     private BillingDirectory BillingDirectory;
+    private LabTestDirectory LabTestDirectory;
+    private LabReportDirectory LabReportDirectory;
     
     public static EcoSystem getInstance(){
         if(business==null){
@@ -144,6 +148,28 @@ public class EcoSystem extends Organization{
 
     public void setBillingDirectory(BillingDirectory BillingDirectory) {
         this.BillingDirectory = BillingDirectory;
+    }
+
+    public LabTestDirectory getLabTestDirectory() {
+        if(LabTestDirectory == null){
+            LabTestDirectory = new LabTestDirectory();
+        }
+        return LabTestDirectory;
+    }
+
+    public void setLabTestDirectory(LabTestDirectory LabTestDirectory) {
+        this.LabTestDirectory = LabTestDirectory;
+    }
+
+    public LabReportDirectory getLabReportDirectory() {
+        if(LabReportDirectory == null){
+            LabReportDirectory = new LabReportDirectory();
+        }
+        return LabReportDirectory;
+    }
+
+    public void setLabReportDirectory(LabReportDirectory LabReportDirectory) {
+        this.LabReportDirectory = LabReportDirectory;
     }
 
     

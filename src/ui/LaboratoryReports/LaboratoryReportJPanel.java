@@ -2,18 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.Laboratory;
+package ui.LaboratoryReports;
+
+import Business.Enterprise.Enterprise;
+import Business.Organization.LabReportOrganization;
+import Business.Organization.LabTestOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
 
 /**
  *
  * @author user
  */
-public class LaboratoryReportDatabaseJPanel extends javax.swing.JPanel {
+public class LaboratoryReportJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form LaboratoryReportDatabaseJPanel
      */
-    public LaboratoryReportDatabaseJPanel() {
+    public LaboratoryReportJPanel(JPanel userProcessContainer, UserAccount account, LabReportOrganization labReportOrganization, Enterprise enterprise) {
         initComponents();
     }
 
