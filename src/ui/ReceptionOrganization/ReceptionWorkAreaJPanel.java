@@ -5,6 +5,13 @@
  */
 package ui.ReceptionOrganization;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.ReceptionOrganization;
+import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+
 /**
  *
  * @author jeetkhimani
@@ -14,8 +21,20 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ReceptionWorkAreaJPanel
      */
-    public ReceptionWorkAreaJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem business;
+    private UserAccount userAccount;
+    private String resName;
+    private int value = 0;
+    
+
+    public ReceptionWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization receptionOrganization, Enterprise enterprise) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.business = business;
+        this.userAccount = account;
+        //this.manager = new ArrayList<>();
     }
 
     /**

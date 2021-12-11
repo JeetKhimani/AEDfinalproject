@@ -128,6 +128,12 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Username");
 
+        usernameJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameJTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Enterprise");
 
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -273,6 +279,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void enterpriseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseJComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_enterpriseJComboBoxActionPerformed
+
+    private void usernameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameJTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameJTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
