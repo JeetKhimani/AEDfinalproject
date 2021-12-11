@@ -5,10 +5,18 @@
  */
 package ui.SystemAdminWorkArea;
 
+import Business.Doctor.Doctor;
 import Business.EcoSystem;
+import Business.Patient.Patient;
+import Business.Patient.PatientDirectory;
+import Business.Role.DoctorRole;
+import Business.Role.PatientRole;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +34,7 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        populatepatienttable();
     }
         
         
@@ -49,7 +58,7 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatientList = new javax.swing.JTable();
@@ -60,7 +69,12 @@ public class ManageUserJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Password:");
 
-        jButton1.setText("Submit");
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +120,7 @@ public class ManageUserJPanel extends javax.swing.JPanel {
                                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(61, 61, 61)
-                                .addComponent(jButton1))))
+                                .addComponent(btnSubmit))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -135,7 +149,7 @@ public class ManageUserJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                        .addComponent(btnSubmit)))
                 .addContainerGap(359, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -153,9 +167,42 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        
+        if (txtName.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Name Missing");
+            return;
+        }
+        if (txtUsername.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Username Missing");
+            return;
+        }
+        if (txtPassword.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Password Missing");
+            return;
+        }
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(txtUsername.getText()) == true){
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getText());
+        String name = txtName.getText();
+        UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, name, new PatientRole());
+        Patient patient = system.getPatientDirectory().setPatient(new Patient(username, password, name));
+        txtName.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        populatepatienttable();
+        JOptionPane.showMessageDialog(null, "Added new user");
+        }
+        else {
+            JOptionPane.showMessageDialog(null, txtUsername.getText() + " exists. Enter a new username");
+        }
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -166,4 +213,17 @@ public class ManageUserJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void populatepatienttable() {
+        DefaultTableModel table = (DefaultTableModel) tblPatientList.getModel();
+        table.setRowCount(0);
+        for (Patient p : system.getPatientDirectory().getPatientDirectory()) {
+            Object[] row = new Object[3];
+            row[0] = p.getName();
+            row[1] = p.getUsername();
+            row[2] = p.getPassword();
+
+            table.addRow(row); 
+        }
+    }
 }

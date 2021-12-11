@@ -11,7 +11,7 @@ import Business.Organization.Organization;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-import Business.User.PatientDirectory;
+import Business.Patient.PatientDirectory;
 import java.util.ArrayList;
 
 /**

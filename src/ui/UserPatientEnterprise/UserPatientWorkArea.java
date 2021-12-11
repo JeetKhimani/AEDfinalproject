@@ -5,8 +5,12 @@
  */
 package ui.UserPatientEnterprise;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.PatientOrganization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JPanel;
 import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
@@ -18,7 +22,7 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form UserPatientWorkArea
      */
-    public UserPatientWorkArea() {
+    public UserPatientWorkArea(JPanel userProcessContainer, UserAccount account, PatientOrganization patientOrganization, Enterprise enterprise) {
         initComponents();
     }
 
