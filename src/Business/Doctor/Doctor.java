@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Reception;
-
-
+package Business.Doctor;
 
 /**
  *
  * @author jeetkhimani
  */
-public class Reception{
+public class Doctor {
     private String name;
     private String username;
     private String password;
 
-    public Reception(String username,String password, String name) {
+    public Doctor(String username,String password, String name) {
         this.username = username;
         this.name = name;
         this.password = password;

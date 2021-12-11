@@ -46,7 +46,7 @@ public class ReceptionDirectory {
                 return "Account deleted";
             }
         }
-        return "Customer not found";
+        return "Reception not found";
     }
     
     

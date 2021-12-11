@@ -4,6 +4,7 @@
  */
 package Business.Organization;
 
+import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
@@ -22,6 +23,7 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private ReceptionDirectory receptionDirectory;
+    private DoctorDirectory doctorDirectory;
     private int organizationID;
     private static int counter=0;
     
@@ -38,6 +40,10 @@ public abstract class Organization {
 
     public ReceptionDirectory getReceptionDirectory() {
         return receptionDirectory;
+    }
+
+    public DoctorDirectory getDoctorDirectory() {
+        return doctorDirectory;
     }
 
     

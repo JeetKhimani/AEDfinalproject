@@ -28,8 +28,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
-    private LoginInfo logininfo;
-    private Reception r;
+    
 
     public ManageReceptionJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
@@ -178,9 +177,8 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         }
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(txtUsername.getText()) == true){
         String username = txtUsername.getText();
-        String password = String.valueOf(txtUsername.getText());
+        String password = String.valueOf(txtPassword.getText());
         String name = txtName.getText();
-        logininfo = new LoginInfo(txtUsername.getText(), txtPassword.getText(), txtName.getText());
         UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, name, new ReceptionRole());
         Reception reception = system.getReceptionDirectory().setReception(new Reception(username, password, name));
         txtName.setText("");
@@ -211,7 +209,6 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
 
     private void populatetable() {
        
-
         DefaultTableModel table = (DefaultTableModel) tblReceptionDetails.getModel();
         table.setRowCount(0);
         for (Reception reception : system.getReceptionDirectory().getReceptionDirectory()) {
