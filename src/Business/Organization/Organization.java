@@ -8,7 +8,7 @@ import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
-import Business.User.PatientDirectory;
+import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
