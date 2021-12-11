@@ -13,6 +13,7 @@ import Business.LoginInfo.LoginInfo;
  */
 public class Reception {
     
+    
     private LoginInfo ReceptionLoginInfo;
 
     public LoginInfo getReceptionLoginInfo() {
