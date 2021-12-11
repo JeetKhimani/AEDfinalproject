@@ -5,6 +5,11 @@
  */
 package ui.BillingOrganization;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.BillingOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hetgerrard08
@@ -14,7 +19,7 @@ public class BillingWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form BillingWorkArea
      */
-    public BillingWorkArea() {
+    public BillingWorkArea(JPanel userProcessContainer, UserAccount account, BillingOrganization BillingOrganization, Enterprise enterprise) {
         initComponents();
     }
 

@@ -40,7 +40,8 @@ public abstract class Organization {
         Lab("Lab Organization"), Reception("Reception Organization"),
         Patient("Patient Organization"), Pharmacy("Pharmacy Organization"),
         Pharmacyinventory("Pharmacyinventory Organization"),
-        Insurance("Insurance Organization");
+        Insurance("Insurance Organization"),
+        Billing("Billing Organization");
         private String value;
         private Type(String value) {
             this.value = value;
