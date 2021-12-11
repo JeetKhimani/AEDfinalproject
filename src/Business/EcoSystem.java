@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Business.Billing.BillingDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Insurance.InsuranceDirectory;
 import Business.Network.Network;
@@ -31,6 +32,7 @@ public class EcoSystem extends Organization{
     private PharmacyDirectory PharmacyDirectory;
     private PharmacyinventoryDirectory PharmacyinventoryDirectory;
     private InsuranceDirectory InsuranceDirectory;
+    private BillingDirectory BillingDirectory;
     
     public static EcoSystem getInstance(){
         if(business==null){
@@ -131,6 +133,17 @@ public class EcoSystem extends Organization{
 
     public void setInsuranceDirectory(InsuranceDirectory InsuranceDirectory) {
         this.InsuranceDirectory = InsuranceDirectory;
+    }
+
+    public BillingDirectory getBillingDirectory() {
+        if(BillingDirectory == null){
+            BillingDirectory = new BillingDirectory();
+        }
+        return BillingDirectory;
+    }
+
+    public void setBillingDirectory(BillingDirectory BillingDirectory) {
+        this.BillingDirectory = BillingDirectory;
     }
 
     
