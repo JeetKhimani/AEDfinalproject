@@ -36,12 +36,6 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         this.system = system;
         populatepatienttable();
     }
-        
-        
-        
-        
-        
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

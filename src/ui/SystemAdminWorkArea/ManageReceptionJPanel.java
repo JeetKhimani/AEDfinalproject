@@ -9,9 +9,11 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.LoginInfo.LoginInfo;
+import Business.Pharmacyinventory.Pharmacyinventory;
 import Business.Reception.Reception;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.AdminRole;
+import Business.Role.PharmacyinventoryRole;
 import Business.Role.ReceptionRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -155,10 +157,6 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
@@ -178,32 +176,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
                 
-        
-        
-      
-        
-        String username = txtUsername.getText();
-        String password = String.valueOf(txtUsername.getText());
-        String name = txtName.getText();
-        
- 
-        
-        UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, null, new ReceptionRole());
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*if (txtName.getText().equals("")) {
-=======
         if (txtName.getText().equals("")) {
-
             JOptionPane.showMessageDialog(null, "Name Missing");
             return;
         }
@@ -220,7 +193,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         String password = String.valueOf(txtPassword.getText());
         String name = txtName.getText();
         UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, name, new ReceptionRole());
-        Reception reception = system.getReceptionDirectory().setReception(new Reception(username, password, name));
+        Reception Reception = system.getReceptionDirectory().setReception(new Reception(username, password, name));
         txtName.setText("");
         txtUsername.setText("");
         txtPassword.setText("");

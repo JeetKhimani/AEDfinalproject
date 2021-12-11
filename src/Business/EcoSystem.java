@@ -6,12 +6,15 @@
 package Business;
 
 import Business.Doctor.DoctorDirectory;
+import Business.Insurance.InsuranceDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.Patient.PatientDirectory;
+import Business.Pharmacy.PharmacyDirectory;
+import Business.Pharmacyinventory.PharmacyinventoryDirectory;
 import java.util.ArrayList;
 
 /**
@@ -19,36 +22,29 @@ import java.util.ArrayList;
  * @author MyPC1
  */
 public class EcoSystem extends Organization{
-    private ReceptionDirectory ReceptionDirectory;
-
-    public ReceptionDirectory getReceptionDirectory() {
-        return ReceptionDirectory;
-    }
-
-    public void setReceptionDirectory(ReceptionDirectory ReceptionDirectory) {
-        this.ReceptionDirectory = ReceptionDirectory;
-    }
-
-    public static EcoSystem getBusiness() {
-        return business;
-    }
-
-    public static void setBusiness(EcoSystem business) {
-        EcoSystem.business = business;
-    }
     
-    
-	private static EcoSystem business;
+    private static EcoSystem business;
     private ArrayList<Network> networkList;
     private ReceptionDirectory ReceptionDirectory;
     private DoctorDirectory DoctorDirectory;
     private PatientDirectory PatientDirectory;
+    private PharmacyDirectory PharmacyDirectory;
+    private PharmacyinventoryDirectory PharmacyinventoryDirectory;
+    private InsuranceDirectory InsuranceDirectory;
     
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
         }
         return business;
+    }
+    
+    public static EcoSystem getBusiness() {
+        return business;
+    }
+
+    public static void setBusiness(EcoSystem business) {
+        EcoSystem.business = business;
     }
     
     public Network createAndAddNetwork(){
@@ -104,6 +100,41 @@ public class EcoSystem extends Organization{
         this.PatientDirectory = PatientDirectory;
     }
 
+    public PharmacyDirectory getPharmacyDirectory() {
+        if(PharmacyDirectory == null){
+            PharmacyDirectory = new PharmacyDirectory();
+        }
+        return PharmacyDirectory;
+    }
+
+    public void setPharmacyDirectory(PharmacyDirectory PharmacyDirectory) {
+        this.PharmacyDirectory = PharmacyDirectory;
+    }
+
+    public PharmacyinventoryDirectory getPharmacyinventoryDirectory() {
+        if(PharmacyinventoryDirectory == null){
+            PharmacyinventoryDirectory = new PharmacyinventoryDirectory();
+        }
+        return PharmacyinventoryDirectory;
+    }
+
+    public void setPharmacyinventoryDirectory(PharmacyinventoryDirectory PharmacyinventoryDirectory) {
+        this.PharmacyinventoryDirectory = PharmacyinventoryDirectory;
+    }
+
+    public InsuranceDirectory getInsuranceDirectory() {
+        if(InsuranceDirectory == null){
+            InsuranceDirectory = new InsuranceDirectory();
+        }
+        return InsuranceDirectory;
+    }
+
+    public void setInsuranceDirectory(InsuranceDirectory InsuranceDirectory) {
+        this.InsuranceDirectory = InsuranceDirectory;
+    }
+
+    
+    
     
     
     
