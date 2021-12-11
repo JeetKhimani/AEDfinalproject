@@ -19,6 +19,23 @@ import java.util.ArrayList;
  * @author MyPC1
  */
 public class EcoSystem extends Organization{
+    private ReceptionDirectory ReceptionDirectory;
+
+    public ReceptionDirectory getReceptionDirectory() {
+        return ReceptionDirectory;
+    }
+
+    public void setReceptionDirectory(ReceptionDirectory ReceptionDirectory) {
+        this.ReceptionDirectory = ReceptionDirectory;
+    }
+
+    public static EcoSystem getBusiness() {
+        return business;
+    }
+
+    public static void setBusiness(EcoSystem business) {
+        EcoSystem.business = business;
+    }
     
     
 	private static EcoSystem business;

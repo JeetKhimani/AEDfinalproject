@@ -34,7 +34,9 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+
         populatetable();
+
     }
     
     
@@ -71,6 +73,12 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         jLabel2.setText("UserName:");
 
         jLabel3.setText("Password:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -147,8 +155,13 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+
 
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
@@ -163,7 +176,34 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
     
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+
+                
+        
+        
+      
+        
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtUsername.getText());
+        String name = txtName.getText();
+        
+ 
+        
+        UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, null, new ReceptionRole());
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*if (txtName.getText().equals("")) {
+=======
         if (txtName.getText().equals("")) {
+
             JOptionPane.showMessageDialog(null, "Name Missing");
             return;
         }
@@ -192,6 +232,10 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

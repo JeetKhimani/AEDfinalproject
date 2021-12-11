@@ -5,6 +5,8 @@
  */
 package Business.Reception;
 
+import Business.LoginInfo.LoginInfo;
+
 
 
 /**
@@ -23,9 +25,14 @@ public class Reception{
     }
     
     
+
+    
+    private LoginInfo ReceptionLoginInfo;
+
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
