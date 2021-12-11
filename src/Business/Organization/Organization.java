@@ -8,6 +8,7 @@ import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
+import Business.User.PatientDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
@@ -24,11 +25,14 @@ public abstract class Organization {
     private UserAccountDirectory userAccountDirectory;
     private ReceptionDirectory receptionDirectory;
     private DoctorDirectory doctorDirectory;
+    private PatientDirectory patientDirectory;
     private int organizationID;
     private static int counter=0;
     
     public enum Type{
-        Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"), Reception("Reception Organization");
+        Admin("Admin Organization"), Doctor("Doctor Organization"),
+        Lab("Lab Organization"), Reception("Reception Organization"),
+        Patient("Patient Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -44,6 +48,10 @@ public abstract class Organization {
 
     public DoctorDirectory getDoctorDirectory() {
         return doctorDirectory;
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
     }
 
     
