@@ -5,6 +5,11 @@
  */
 package ui.DoctorOrganization;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author jeetkhimani
@@ -14,7 +19,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel() {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization receptionOrganization, Enterprise enterprise) {
         initComponents();
     }
 

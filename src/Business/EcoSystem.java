@@ -5,10 +5,13 @@
  */
 package Business;
 
+import Business.Doctor.DoctorDirectory;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.User.PatientDirectory;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +23,10 @@ public class EcoSystem extends Organization{
     
 	private static EcoSystem business;
     private ArrayList<Network> networkList;
+    private ReceptionDirectory ReceptionDirectory;
+    private DoctorDirectory DoctorDirectory;
+    private PatientDirectory PatientDirectory;
+    
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
@@ -47,6 +54,42 @@ public class EcoSystem extends Organization{
         return networkList;
     }
 
+    public ReceptionDirectory getReceptionDirectory() {
+        if(ReceptionDirectory == null){
+            ReceptionDirectory = new ReceptionDirectory();
+        }
+        return ReceptionDirectory;
+    }
+
+    public void setReceptionDirectory(ReceptionDirectory ReceptionDirectory) {
+        this.ReceptionDirectory = ReceptionDirectory;
+    }
+
+    public DoctorDirectory getDoctorDirectory() {
+        if(DoctorDirectory == null){
+            DoctorDirectory = new DoctorDirectory();
+        }
+        return DoctorDirectory;
+    }
+
+    public void setDoctorDirectory(DoctorDirectory DoctorDirectory) {
+        this.DoctorDirectory = DoctorDirectory;
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        if(PatientDirectory == null){
+            PatientDirectory = new PatientDirectory();
+        }
+        return PatientDirectory;
+    }
+
+    public void setPatientDirectory(PatientDirectory PatientDirectory) {
+        this.PatientDirectory = PatientDirectory;
+    }
+
+    
+    
+    
     public void setNetworkList(ArrayList<Network> networkList) {
         this.networkList = networkList;
     }
