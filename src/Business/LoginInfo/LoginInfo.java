@@ -5,6 +5,8 @@
  */
 package Business.LoginInfo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jeetkhimani
@@ -15,6 +17,11 @@ public class LoginInfo {
     String UserName;
     String Password;
 
+    public LoginInfo(String username,String password, String name) {
+        this.UserName = username;
+        this.Name = name;
+        this.Password = password;
+    }
     public String getName() {
         return Name;
     }
