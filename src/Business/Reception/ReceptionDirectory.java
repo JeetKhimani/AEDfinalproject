@@ -13,26 +13,26 @@ import java.util.ArrayList;
  */
 public class ReceptionDirectory {
     
-    private ArrayList<Reception> ReceptionDirectory;
+    private ArrayList<Reception> ReceptionDirectory = new ArrayList<>();
     private Reception reception;
     
     public ReceptionDirectory(){
         ReceptionDirectory = new ArrayList<>();
     }
-
+    
     public Reception setReception(Reception reception) {
         this.reception = reception;
         ReceptionDirectory.add(reception);
         return reception;
     }
-
+    
     public ArrayList<Reception> getReceptionDirectory() {
         return ReceptionDirectory;
     }
     
     public Reception getReceptionByUserName(String username){
         for(Reception r: ReceptionDirectory){
-            if(r.getReceptionLoginInfo().getUserName().equals(username)){
+            if(r.getUsername().equals(username)){
                 return r;
             }
         }
@@ -41,7 +41,7 @@ public class ReceptionDirectory {
     
     public String removeReceptionByName(String name){
         for (Reception r : ReceptionDirectory){
-            if(r.getReceptionLoginInfo().getUserName().equals(name)){
+            if(r.getUsername().equals(name)){
                 ReceptionDirectory.remove(r);
                 return "Account deleted";
             }
@@ -49,10 +49,5 @@ public class ReceptionDirectory {
         return "Customer not found";
     }
     
-    //the below code is written by me not in the assignment 5
-
-    public void setReceptionDirectory(ArrayList<Reception> ReceptionDirectory) {
-        this.ReceptionDirectory = ReceptionDirectory;
-    }
     
 }

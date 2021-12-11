@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -20,6 +21,7 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private ReceptionDirectory receptionDirectory;
     private int organizationID;
     private static int counter=0;
     
@@ -33,6 +35,12 @@ public abstract class Organization {
             return value;
         }
     }
+
+    public ReceptionDirectory getReceptionDirectory() {
+        return receptionDirectory;
+    }
+
+    
 
     public Organization(String name) {
         this.name = name;
