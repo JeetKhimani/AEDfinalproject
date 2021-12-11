@@ -6,9 +6,12 @@ package Business.Organization;
 
 import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
+import Business.Insurance.InsuranceDirectory;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.Role;
 import Business.Patient.PatientDirectory;
+import Business.Pharmacy.PharmacyDirectory;
+import Business.Pharmacyinventory.PharmacyinventoryDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
@@ -26,13 +29,18 @@ public abstract class Organization {
     private ReceptionDirectory receptionDirectory;
     private DoctorDirectory doctorDirectory;
     private PatientDirectory patientDirectory;
+    private PharmacyDirectory pharmacyDirectory;
+    private PharmacyinventoryDirectory pharmacyinventoryDirectory;
+    private InsuranceDirectory InventoryDirectory;
     private int organizationID;
     private static int counter=0;
     
     public enum Type{
         Admin("Admin Organization"), Doctor("Doctor Organization"),
         Lab("Lab Organization"), Reception("Reception Organization"),
-        Patient("Patient Organization");
+        Patient("Patient Organization"), Pharmacy("Pharmacy Organization"),
+        Pharmacyinventory("Pharmacyinventory Organization"),
+        Insurance("Insurance Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -53,6 +61,24 @@ public abstract class Organization {
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
+
+    public PharmacyDirectory getPharmacyDirectory() {
+        return pharmacyDirectory;
+    }
+
+    public PharmacyinventoryDirectory getPharmacyinventoryDirectory() {
+        return pharmacyinventoryDirectory;
+    }
+
+    public InsuranceDirectory getInventoryDirectory() {
+        return InventoryDirectory;
+    }
+
+    public void setInventoryDirectory(InsuranceDirectory InventoryDirectory) {
+        this.InventoryDirectory = InventoryDirectory;
+    }
+
+    
 
     
 

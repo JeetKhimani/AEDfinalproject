@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.InsuraceOffice;
+package ui.InsuranceOffice;
+
+import Business.Enterprise.Enterprise;
+import Business.Organization.InsuranceOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,7 +19,7 @@ public class InsuranceOfficeWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form InsuranceOfficeWorkArea
      */
-    public InsuranceOfficeWorkArea() {
+    public InsuranceOfficeWorkArea(JPanel userProcessContainer, UserAccount account, InsuranceOrganization InsuranceOrganization, Enterprise enterprise) {
         initComponents();
     }
 

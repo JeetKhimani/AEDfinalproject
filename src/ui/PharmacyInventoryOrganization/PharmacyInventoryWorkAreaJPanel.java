@@ -5,16 +5,21 @@
  */
 package ui.PharmacyInventoryOrganization;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.PharmacyinventoryOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author jeetkhimani
  */
-public class ParmacyInventoryWorkAreaJPanel extends javax.swing.JPanel {
+public class PharmacyInventoryWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ParmacyInventoryWorkAreaJPanel
      */
-    public ParmacyInventoryWorkAreaJPanel() {
+    public PharmacyInventoryWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, PharmacyinventoryOrganization pharmacyinventoryOrganization, Enterprise enterprise) {
         initComponents();
     }
 
