@@ -33,6 +33,7 @@ public class ManageInsuranceOfficeJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        populateInsurancetable();
     }
 
     /**

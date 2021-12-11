@@ -33,6 +33,7 @@ public class ManagePharmacyInventoryJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+        populatepharmacyinventorytable();
     }
 
     /**

@@ -9,9 +9,11 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.LoginInfo.LoginInfo;
+import Business.Pharmacyinventory.Pharmacyinventory;
 import Business.Reception.Reception;
 import Business.Reception.ReceptionDirectory;
 import Business.Role.AdminRole;
+import Business.Role.PharmacyinventoryRole;
 import Business.Role.ReceptionRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -34,7 +36,9 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
+
         populatetable();
+
     }
     
     
@@ -71,6 +75,12 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         jLabel2.setText("UserName:");
 
         jLabel3.setText("Password:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -147,8 +157,9 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+
 
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
@@ -163,6 +174,8 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
     
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+
+                
         if (txtName.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Name Missing");
             return;
@@ -180,7 +193,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         String password = String.valueOf(txtPassword.getText());
         String name = txtName.getText();
         UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, name, new ReceptionRole());
-        Reception reception = system.getReceptionDirectory().setReception(new Reception(username, password, name));
+        Reception Reception = system.getReceptionDirectory().setReception(new Reception(username, password, name));
         txtName.setText("");
         txtUsername.setText("");
         txtPassword.setText("");
@@ -192,6 +205,10 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

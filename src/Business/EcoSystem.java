@@ -39,6 +39,14 @@ public class EcoSystem extends Organization{
         return business;
     }
     
+    public static EcoSystem getBusiness() {
+        return business;
+    }
+
+    public static void setBusiness(EcoSystem business) {
+        EcoSystem.business = business;
+    }
+    
     public Network createAndAddNetwork(){
         Network network=new Network();
         networkList.add(network);
