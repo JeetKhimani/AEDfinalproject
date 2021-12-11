@@ -30,15 +30,17 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
      */
     public LabAssistantWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
         initComponents();
-        
+        /*
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
         this.labOrganization = (LabOrganization)organization;
         
         populateTable();
+        
+        */
     }
-    
+    /*
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
         
@@ -54,7 +56,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,7 +146,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
-        populateTable();
+        //populateTable();
         
     }//GEN-LAST:event_assignJButtonActionPerformed
 
@@ -168,7 +170,7 @@ public class LabAssistantWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
+        //populateTable();
     }//GEN-LAST:event_refreshJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
