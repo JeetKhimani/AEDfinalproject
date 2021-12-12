@@ -26,6 +26,15 @@ public class PharmacyDirectory {
         return Pharmacy;
     }
     
+    public Pharmacy findPharmacyByUsername(String username) {
+        for (Pharmacy r : PharmacyDirectory) {
+            if (r.getUsername().equals(username)) {
+                return r;
+            }
+        }
+        return null;
+    }
+    
     public ArrayList<Pharmacy> getPharmacyDirectory() {
         return PharmacyDirectory;
     }

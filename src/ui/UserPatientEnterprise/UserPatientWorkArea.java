@@ -5,6 +5,7 @@
  */
 package ui.UserPatientEnterprise;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.PatientOrganization;
 import Business.UserAccount.UserAccount;
@@ -18,12 +19,21 @@ import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
  * @author hetgerrard08
  */
 public class UserPatientWorkArea extends javax.swing.JPanel {
+    
+    JPanel userProcessContainer;
+    private UserAccount account;
+    private EcoSystem business;
+    
+    
 
     /**
      * Creates new form UserPatientWorkArea
      */
     public UserPatientWorkArea(JPanel userProcessContainer, UserAccount account, PatientOrganization patientOrganization, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.business = business;
     }
 
     /**
@@ -39,12 +49,16 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Patient Work Area");
 
         jButton1.setText("Personal Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Start New Case");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -60,29 +74,17 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(322, 322, 322)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(322, 322, 322)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton4)))
+                    .addComponent(jButton3)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(331, Short.MAX_VALUE))
         );
 
@@ -98,9 +100,7 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(303, 303, 303))
+                .addContainerGap(545, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
@@ -109,25 +109,31 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        UserPatientNewCase PersonalInfo = new UserPatientNewCase(userProcessContainer, account, business);
+        userProcessContainer.add("Start New Case", PersonalInfo);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      
-        
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
+        UserPatientPersonalInfo PersonalInfo = new UserPatientPersonalInfo(userProcessContainer, account, business);
+        userProcessContainer.add("Patient Details", PersonalInfo);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

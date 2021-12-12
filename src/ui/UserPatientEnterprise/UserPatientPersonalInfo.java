@@ -5,18 +5,39 @@
  */
 package ui.UserPatientEnterprise;
 
+import Business.EcoSystem;
+import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+
 /**
  *
  * @author hetgerrard08
  */
 public class UserPatientPersonalInfo extends javax.swing.JPanel {
 
+    JPanel userProcessContainer;
+    private UserAccount account;
+    private EcoSystem business;
+    private ArrayList<Patient> pat = new ArrayList<>();
+    private Patient patient;
+
     /**
      * Creates new form UserPatientPersonalInfo
      */
-    public UserPatientPersonalInfo() {
+    public UserPatientPersonalInfo(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.business = business;
+        
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +98,11 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
         btnSubmit.setText("SUBMIT");
 
         btnPatientPersonalInfoBack.setText("<< Back");
+        btnPatientPersonalInfoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatientPersonalInfoBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,6 +180,19 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
     private void txtContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactNoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactNoActionPerformed
+
+    private void btnPatientPersonalInfoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPersonalInfoBackActionPerformed
+        // TODO add your handling code here:
+        
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        UserPatientWorkArea sysAdminwjp = (UserPatientWorkArea) component;
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+
+    
+    }//GEN-LAST:event_btnPatientPersonalInfoBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
