@@ -6,15 +6,9 @@
 package ui.SystemAdminWorkArea;
 
 import Business.EcoSystem;
-import Business.Employee.Employee;
-import Business.Enterprise.Enterprise;
-import Business.LoginInfo.LoginInfo;
-import Business.Pharmacyinventory.Pharmacyinventory;
+import Business.Pharmacy.Pharmacy;
 import Business.Reception.Reception;
-import Business.Reception.ReceptionDirectory;
-import Business.Role.AdminRole;
-import Business.Role.PharmacyinventoryRole;
-import Business.Role.ReceptionRole;
+import Business.Role.PharmacyRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -27,24 +21,26 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jeetkhimani
+ * @author hetgerrard08
  */
 public class ManageReceptionJPanel extends javax.swing.JPanel {
-
     private JPanel userProcessContainer;
     private EcoSystem system;
     
 
+    /**
+     * Creates new form ManageReceptionJpanel
+     */
     public ManageReceptionJPanel(JPanel userProcessContainer, EcoSystem system) {
+        
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
+        
         populatetable();
         dispimg();
+        
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,68 +51,17 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
-        btnSubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReceptionDetails = new javax.swing.JTable();
-<<<<<<< HEAD
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-=======
+        txtUsername = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(null);
->>>>>>> 7bfc96991deab8e52f0acaab3c03ac820298faa7
-
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack);
-        btnBack.setBounds(1130, 730, 75, 29);
-
-        jLabel1.setText("Name:");
-        add(jLabel1);
-        jLabel1.setBounds(550, 530, 40, 16);
-
-        jLabel2.setText("UserName:");
-        add(jLabel2);
-        jLabel2.setBounds(530, 570, 68, 16);
-
-        jLabel3.setText("Password:");
-        add(jLabel3);
-        jLabel3.setBounds(530, 610, 63, 16);
-
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        add(txtName);
-        txtName.setBounds(610, 530, 104, 26);
-        add(txtUsername);
-        txtUsername.setBounds(610, 560, 104, 26);
-        add(txtPassword);
-        txtPassword.setBounds(610, 600, 104, 26);
-
-        btnSubmit.setText("Submit");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-        add(btnSubmit);
-        btnSubmit.setBounds(590, 660, 88, 29);
 
         tblReceptionDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,55 +76,78 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblReceptionDetails);
 
-<<<<<<< HEAD
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel2.setBackground(new java.awt.Color(102, 0, 102));
+        jLabel2.setText("Username:");
 
-            },
-            new String [] {
-                "Date"
+        jLabel3.setBackground(new java.awt.Color(102, 0, 102));
+        jLabel3.setText("Password:");
+
+        jLabel1.setText("Name:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        });
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(296, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(273, 273, 273))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(btnSubmit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(btnBack)
-                        .addGap(23, 23, 23)
+                        .addGap(515, 515, 515)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(241, 241, 241)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(207, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtUsername)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSubmit)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(401, 401, 401)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,60 +161,47 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSubmit)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(36, 36, 36))
         );
-=======
-        add(jScrollPane1);
-        jScrollPane1.setBounds(230, 330, 870, 160);
-        add(jLabel4);
-        jLabel4.setBounds(350, 0, 540, 260);
->>>>>>> 7bfc96991deab8e52f0acaab3c03ac820298faa7
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void dispimg(){
-        scaleIcon(690,330,"src/images/reception.jpg", jLabel4);
+        scaleIcon(436,230, "src/images/reception.jpg", jLabel4);
+        
     }
     
-    public void scaleIcon(int Width, int Height, String imgPath, javax.swing.JLabel jLabel){
+    private void scaleIcon(int width, int height, String imgPath, javax.swing.JLabel JLabel){
         File file = new File(imgPath);
         String absolutePath = file.getAbsolutePath();
         ImageIcon img = new ImageIcon(absolutePath);
         System.out.println(absolutePath);
         Image icon = img.getImage();
-        icon = icon.getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
+        icon = icon.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         img = new ImageIcon(icon);
-        jLabel.setIcon(img);
-        jLabel.setText("");
-       
+        JLabel.setIcon(img);
+        JLabel.setText("");
     }
     
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
-
-        userProcessContainer.remove(this);
+        // TODO add your handling code here:
+         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
 
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
-    
-    
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-
-                
         if (txtName.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Name Missing");
             return;
@@ -263,8 +218,8 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = String.valueOf(txtPassword.getText());
         String name = txtName.getText();
-        UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, name, new ReceptionRole());
-        Reception Reception = system.getReceptionDirectory().setReception(new Reception(username, password, name));
+        UserAccount account = system.getUserAccountDirectory().createUserAccount(username, password, name, new PharmacyRole());
+        Pharmacy pharmacy = system.getPharmacyDirectory().setPharmacy(new Pharmacy(username, password, name));
         txtName.setText("");
         txtUsername.setText("");
         txtPassword.setText("");
@@ -275,24 +230,20 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, txtUsername.getText() + "exists. Enter a new user name");
         }
         
+        
+        
+        
     }//GEN-LAST:event_btnSubmitActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable tblReceptionDetails;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
@@ -300,16 +251,16 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populatetable() {
-       
-        DefaultTableModel table = (DefaultTableModel) tblReceptionDetails.getModel();
-        table.setRowCount(0);
-        for (Reception reception : system.getReceptionDirectory().getReceptionDirectory()) {
-            Object[] row = new Object[3];
-            row[0] = reception.getName();
-            row[1] = reception.getUsername();
-            row[2] = reception.getPassword();
-
-            table.addRow(row); 
-        }
+    DefaultTableModel table = (DefaultTableModel) tblReceptionDetails.getModel();
+    table.setRowCount(0);
+    for(Reception reception : system.getReceptionDirectory().getReceptionDirectory()){
+        Object[] row = new Object[3];
+        row[0] = reception.getName();
+        row[1] = reception.getUsername();
+        row[2] = reception.getPassword();
+        table.addRow(row);
+        
+    }
+    
     }
 }
