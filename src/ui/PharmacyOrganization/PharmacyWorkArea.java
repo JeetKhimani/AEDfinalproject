@@ -5,7 +5,10 @@
  */
 package ui.PharmacyOrganization;
 
+<<<<<<< HEAD
+=======
 import Business.Doctor.Doctor;
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.PharmacyOrganization;
@@ -19,6 +22,18 @@ import javax.swing.JPanel;
  * @author hetgerrard08
  */
 public class PharmacyWorkArea extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    private UserAccount account;
+    private EcoSystem business;
+    
+    public PharmacyWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.business = business;
+        
+    
+    }
 
     
     private UserAccount userAccount;
@@ -48,6 +63,10 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+<<<<<<< HEAD
+        jLabel2 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
+=======
         jTextField4 = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -55,6 +74,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Pharmacy Work Area");
@@ -76,6 +96,11 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
 
         jButton1.setText("Assign");
 
+<<<<<<< HEAD
+        jLabel2.setText("Pharmacy :");
+
+        valueLabel.setText("<value>");
+=======
         btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.setBorderPainted(false);
@@ -98,6 +123,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
                 jTextField3ActionPerformed(evt);
             }
         });
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,6 +131,19 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(jLabel2)
+                        .addGap(32, 32, 32)
+                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
@@ -133,6 +172,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -142,6 +182,13 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(valueLabel))
+                .addGap(18, 18, 18)
+=======
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -157,12 +204,17 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(btnUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
+<<<<<<< HEAD
+                .addGap(0, 444, Short.MAX_VALUE))
+=======
                 .addGap(251, 251, 251))
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jComboBox1});
@@ -197,6 +249,12 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel valueLabel;
+=======
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -205,6 +263,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+>>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
     // End of variables declaration//GEN-END:variables
 
 
