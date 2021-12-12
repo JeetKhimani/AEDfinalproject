@@ -20,6 +20,6 @@ import ui.PharmacyInventoryOrganization.PharmacyInventoryWorkAreaJPanel;
 public class PharmacyinventoryRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new PharmacyInventoryWorkAreaJPanel(userProcessContainer, account, (PharmacyinventoryOrganization)organization, enterprise);
+        return new PharmacyInventoryWorkAreaJPanel(userProcessContainer, account, (PharmacyinventoryOrganization)organization, enterprise, business);
     }
 }

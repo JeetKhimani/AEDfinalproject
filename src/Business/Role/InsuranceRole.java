@@ -20,6 +20,6 @@ import ui.InsuranceOffice.InsuranceOfficeWorkArea;
 public class InsuranceRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new InsuranceOfficeWorkArea(userProcessContainer, account, (InsuranceOrganization)organization, enterprise);
+        return new InsuranceOfficeWorkArea(userProcessContainer, account, (InsuranceOrganization)organization, enterprise, business);
     }
 }

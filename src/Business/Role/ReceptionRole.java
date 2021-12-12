@@ -21,6 +21,6 @@ public class ReceptionRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new ReceptionWorkAreaJPanel(userProcessContainer, account, (ReceptionOrganization)organization, enterprise);
+        return new ReceptionWorkAreaJPanel(userProcessContainer, account, (ReceptionOrganization)organization, enterprise, business);
     }
 }

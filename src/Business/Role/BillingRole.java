@@ -20,6 +20,6 @@ import ui.BillingOrganization.BillingWorkArea;
 public class BillingRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new BillingWorkArea(userProcessContainer, account, (BillingOrganization)organization, enterprise);
+        return new BillingWorkArea(userProcessContainer, account, (BillingOrganization)organization, enterprise, business);
     }
 }
