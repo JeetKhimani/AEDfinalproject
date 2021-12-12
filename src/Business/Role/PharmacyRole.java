@@ -23,6 +23,6 @@ public class PharmacyRole extends Role {
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new PharmacyWorkArea(userProcessContainer, account, (PharmacyOrganization)organization, enterprise);
+        return new PharmacyWorkArea(userProcessContainer, account, (PharmacyOrganization)organization, enterprise, business);
     }
 }

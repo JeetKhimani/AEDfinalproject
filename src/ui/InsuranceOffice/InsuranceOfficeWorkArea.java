@@ -5,9 +5,13 @@
  */
 package ui.InsuranceOffice;
 
+import Business.Doctor.Doctor;
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Insurance.Insurance;
 import Business.Organization.InsuranceOrganization;
 import Business.UserAccount.UserAccount;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,11 +20,17 @@ import javax.swing.JPanel;
  */
 public class InsuranceOfficeWorkArea extends javax.swing.JPanel {
 
+    
+    private UserAccount userAccount;
+    private EcoSystem system;
     /**
      * Creates new form InsuranceOfficeWorkArea
      */
-    public InsuranceOfficeWorkArea(JPanel userProcessContainer, UserAccount account, InsuranceOrganization InsuranceOrganization, Enterprise enterprise) {
+    public InsuranceOfficeWorkArea(JPanel userProcessContainer, UserAccount account, InsuranceOrganization InsuranceOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
+        this.userAccount = account;
+        this.system = ecosystem;
+        populatedata();
     }
 
     /**
@@ -38,6 +48,13 @@ public class InsuranceOfficeWorkArea extends javax.swing.JPanel {
         lblPatientDetails = new javax.swing.JLabel();
         btnPass = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
+        jTextField4 = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
 
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Insurance Office Work Area");
@@ -62,19 +79,65 @@ public class InsuranceOfficeWorkArea extends javax.swing.JPanel {
 
         btnReject.setText("Reject");
 
+        btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.setBorderPainted(false);
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setBackground(new java.awt.Color(102, 0, 102));
+        jLabel7.setText("Username:");
+
+        jLabel8.setBackground(new java.awt.Color(102, 0, 102));
+        jLabel8.setText("Password:");
+
+        jLabel9.setText("Name:");
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-            .addComponent(lblPatientDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPass)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnReject)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
+                    .addComponent(lblPatientDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPass)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReject)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(286, 286, 286)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPass, btnReject});
@@ -83,7 +146,21 @@ public class InsuranceOfficeWorkArea extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(btnUpdate)
+                .addGap(45, 45, 45)
                 .addComponent(lblPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,20 +168,59 @@ public class InsuranceOfficeWorkArea extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPass)
                     .addComponent(btnReject))
-                .addGap(0, 439, Short.MAX_VALUE))
+                .addGap(0, 248, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnPass, btnReject});
 
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+
+        if (jTextField2.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Password Missing");
+            return;
+        }
+        if (jTextField3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Name Missing");
+            return;
+        }
+
+        Insurance i = system.getInsuranceDirectory().getInsuranceByUserName(userAccount.getUsername());
+        i.setPassword(jTextField2.getText());
+        i.setName(jTextField3.getText());
+        JOptionPane.showMessageDialog(null, "Updated details");
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPass;
     private javax.swing.JButton btnReject;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblPatientDetails;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblInsuranceOffice;
     // End of variables declaration//GEN-END:variables
+
+
+    private void populatedata() {
+        
+        Insurance i = system.getInsuranceDirectory().getInsuranceByUserName(userAccount.getUsername());
+        jTextField4.setText(i.getUsername());
+        jTextField2.setText(i.getPassword());
+        jTextField3.setText(i.getName());
+    }
+
 }

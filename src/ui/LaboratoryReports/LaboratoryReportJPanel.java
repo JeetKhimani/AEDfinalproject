@@ -1,54 +1,37 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.UserPatientEnterprise;
+package ui.LaboratoryReports;
 
-<<<<<<< HEAD
-=======
 import Business.Doctor.Doctor;
->>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.PatientOrganization;
-import Business.Patient.Patient;
+import Business.LabReport.LabReport;
+import Business.Organization.LabReportOrganization;
+import Business.Organization.LabTestOrganization;
 import Business.UserAccount.UserAccount;
-import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
- * @author hetgerrard08
+ * @author user
  */
-public class UserPatientWorkArea extends javax.swing.JPanel {
-    
-    JPanel userProcessContainer;
-    private UserAccount account;
-    private EcoSystem business;
-    
-    
+public class LaboratoryReportJPanel extends javax.swing.JPanel {
 
     
     private UserAccount userAccount;
     private EcoSystem system;
+    
     /**
-     * Creates new form UserPatientWorkArea
+     * Creates new form LaboratoryReportDatabaseJPanel
      */
-    public UserPatientWorkArea(JPanel userProcessContainer, UserAccount account, PatientOrganization patientOrganization, Enterprise enterprise, EcoSystem ecosystem) {
+    public LaboratoryReportJPanel(JPanel userProcessContainer, UserAccount account, LabReportOrganization labReportOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
-<<<<<<< HEAD
-        this.userProcessContainer = userProcessContainer;
-        this.account = account;
-        this.business = business;
-=======
         this.userAccount = account;
         this.system = ecosystem;
         populatedata();
->>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
     }
 
     /**
@@ -60,13 +43,8 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-<<<<<<< HEAD
-=======
-        jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jTextField4 = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -74,40 +52,19 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
->>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Patient Work Area");
-
-        jButton1.setText("Personal Details");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Patient Name", "Report Name", "Result"
             }
-        });
-
-        jButton2.setText("Start New Case");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Personal History");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-<<<<<<< HEAD
-=======
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
@@ -132,32 +89,17 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
             }
         });
 
->>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(322, 322, 322)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(331, Short.MAX_VALUE))
-=======
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jButton4))
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 691, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
+                        .addGap(272, 272, 272)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -174,17 +116,12 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(316, Short.MAX_VALUE))
->>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
+                .addContainerGap(55, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,46 +135,11 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btnUpdate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-<<<<<<< HEAD
-                .addContainerGap(545, Short.MAX_VALUE))
-=======
-                .addGap(17, 17, 17)
-                .addComponent(jButton4)
-                .addGap(303, 303, 303))
->>>>>>> 124a9831851b10d41ac3126d2e1ca6103857cc83
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(407, 407, 407))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
-
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        UserPatientNewCase PersonalInfo = new UserPatientNewCase(userProcessContainer, account, business);
-        userProcessContainer.add("Start New Case", PersonalInfo);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        UserPatientPersonalInfo PersonalInfo = new UserPatientPersonalInfo(userProcessContainer, account, business);
-        userProcessContainer.add("Patient Details", PersonalInfo);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-         
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -251,9 +153,9 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
             return;
         }
 
-        Patient d = system.getPatientDirectory().getPatientByUserName(userAccount.getUsername());
-        d.setPassword(jTextField2.getText());
-        d.setName(jTextField3.getText());
+        LabReport lr = system.getLabReportDirectory().getLabReportByUserName(userAccount.getUsername());
+        lr.setPassword(jTextField2.getText());
+        lr.setName(jTextField3.getText());
         JOptionPane.showMessageDialog(null, "Updated details");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -264,13 +166,11 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -279,10 +179,10 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
 
     private void populatedata() {
         
-        Patient d = system.getPatientDirectory().getPatientByUserName(userAccount.getUsername());
-        jTextField4.setText(d.getUsername());
-        jTextField2.setText(d.getPassword());
-        jTextField3.setText(d.getName());
+        LabReport lr = system.getLabReportDirectory().getLabReportByUserName(userAccount.getUsername());
+        jTextField4.setText(lr.getUsername());
+        jTextField2.setText(lr.getPassword());
+        jTextField3.setText(lr.getName());
     }
 
 }

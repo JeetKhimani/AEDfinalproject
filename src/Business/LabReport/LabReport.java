@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Billing;
+package Business.LabReport;
 
 /**
  *
- * @author hetgerrard08
+ * @author jeetkhimani
  */
-public class Billing {
+public class LabReport {
     private String name;
     private String username;
     private String password;
 
-    public Billing(String username,String password, String name) {
+    public LabReport(String username,String password, String name) {
         this.username = username;
         this.name = name;
         this.password = password;
