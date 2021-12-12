@@ -20,6 +20,6 @@ import ui.LaboratoryTest.LaboratoryWorkAreaJPanel;
 public class LabTestRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new LaboratoryWorkAreaJPanel(userProcessContainer, account, (LabTestOrganization)organization, enterprise);
+        return new LaboratoryWorkAreaJPanel(userProcessContainer, account, (LabTestOrganization)organization, enterprise, business);
     }
 }
