@@ -72,6 +72,11 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
         jButton1.setText("Assign Doctor");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor Name" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,6 +109,10 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(561, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
