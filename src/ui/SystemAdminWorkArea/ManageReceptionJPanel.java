@@ -18,6 +18,9 @@ import Business.Role.ReceptionRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -38,7 +41,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         this.system = system;
 
         populatetable();
-
+        dispimg();
     }
     
     
@@ -62,9 +65,16 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReceptionDetails = new javax.swing.JTable();
+<<<<<<< HEAD
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+=======
+        jLabel4 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(null);
+>>>>>>> 7bfc96991deab8e52f0acaab3c03ac820298faa7
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -72,18 +82,32 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack);
+        btnBack.setBounds(1130, 730, 75, 29);
 
         jLabel1.setText("Name:");
+        add(jLabel1);
+        jLabel1.setBounds(550, 530, 40, 16);
 
         jLabel2.setText("UserName:");
+        add(jLabel2);
+        jLabel2.setBounds(530, 570, 68, 16);
 
         jLabel3.setText("Password:");
+        add(jLabel3);
+        jLabel3.setBounds(530, 610, 63, 16);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
+        add(txtName);
+        txtName.setBounds(610, 530, 104, 26);
+        add(txtUsername);
+        txtUsername.setBounds(610, 560, 104, 26);
+        add(txtPassword);
+        txtPassword.setBounds(610, 600, 104, 26);
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +115,8 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit);
+        btnSubmit.setBounds(590, 660, 88, 29);
 
         tblReceptionDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,6 +131,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblReceptionDetails);
 
+<<<<<<< HEAD
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -177,9 +204,31 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(211, Short.MAX_VALUE))
         );
+=======
+        add(jScrollPane1);
+        jScrollPane1.setBounds(230, 330, 870, 160);
+        add(jLabel4);
+        jLabel4.setBounds(350, 0, 540, 260);
+>>>>>>> 7bfc96991deab8e52f0acaab3c03ac820298faa7
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private void dispimg(){
+        scaleIcon(690,330,"src/images/reception.jpg", jLabel4);
+    }
+    
+    public void scaleIcon(int Width, int Height, String imgPath, javax.swing.JLabel jLabel){
+        File file = new File(imgPath);
+        String absolutePath = file.getAbsolutePath();
+        ImageIcon img = new ImageIcon(absolutePath);
+        System.out.println(absolutePath);
+        Image icon = img.getImage();
+        icon = icon.getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
+        img = new ImageIcon(icon);
+        jLabel.setIcon(img);
+        jLabel.setText("");
+       
+    }
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
 
@@ -240,6 +289,7 @@ public class ManageReceptionJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

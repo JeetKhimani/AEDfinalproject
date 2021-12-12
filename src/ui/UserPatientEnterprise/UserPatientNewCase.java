@@ -5,17 +5,34 @@
  */
 package ui.UserPatientEnterprise;
 
+import Business.EcoSystem;
+import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hetgerrard08
  */
 public class UserPatientNewCase extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    private UserAccount account;
+    private EcoSystem business;
+    private ArrayList<Patient> pat = new ArrayList<>();
+    private Patient patient;
+
 
     /**
      * Creates new form UserPatientNewCase
      */
-    public UserPatientNewCase() {
+    public UserPatientNewCase(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.business = business;
     }
 
     /**
@@ -45,6 +62,11 @@ public class UserPatientNewCase extends javax.swing.JPanel {
         btnSubmit.setText("SUBMIT");
 
         btnPatientNewCaseBack.setText("<< Back");
+        btnPatientNewCaseBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatientNewCaseBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,6 +112,16 @@ public class UserPatientNewCase extends javax.swing.JPanel {
                 .addGap(0, 360, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPatientNewCaseBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientNewCaseBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        UserPatientWorkArea sysAdminwjp = (UserPatientWorkArea) component;
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnPatientNewCaseBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

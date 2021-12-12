@@ -30,8 +30,8 @@ public class OrganizationDirectory {
             organization = new DoctorOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.Lab.getValue())){
-            organization = new LabOrganization();
+        else if (type.getValue().equals(Type.LabTest.getValue())){
+            organization = new LabTestOrganization();
             organizationList.add(organization);
         }
         return organization;
