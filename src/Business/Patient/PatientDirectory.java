@@ -19,7 +19,9 @@ public class PatientDirectory {
     public PatientDirectory(){
         PatientDirectory = new ArrayList<>();
     }
-    
+    public Patient getPatient(){
+        return patient;
+    }
     public Patient setPatient(Patient patient) {
         this.patient = patient;
         PatientDirectory.add(patient);

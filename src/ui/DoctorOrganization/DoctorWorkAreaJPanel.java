@@ -11,8 +11,10 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import ui.UserPatientEnterprise.UserPatientPersonalInfo;
 
 /**
  *
@@ -20,16 +22,21 @@ import javax.swing.JPanel;
  */
 public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
-    
+    private JPanel userProcessContainer;
     private UserAccount userAccount;
     private EcoSystem system;
+    private DoctorOrganization docorg;
+    private Enterprise enterprise;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization receptionOrganization, Enterprise enterprise, EcoSystem ecosystem) {
+    public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization DoctorOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.system = ecosystem;
+        this.docorg = DoctorOrganization;
+        this.enterprise = enterprise;
         populatedata();
     }
 
@@ -60,6 +67,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("Diagnosis Room");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
@@ -143,6 +155,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          // TODO add your handling code here:
+         
+        CheckNewPatientJPanel cnp = new CheckNewPatientJPanel(userProcessContainer, userAccount, docorg, enterprise, system);
+        userProcessContainer.add("Check New Patient", cnp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -166,6 +184,16 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        DiagnosisRoomJPanel drjp = new DiagnosisRoomJPanel(userProcessContainer, userAccount, docorg, enterprise, system);
+        userProcessContainer.add("Check New Patient", drjp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

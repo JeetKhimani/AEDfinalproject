@@ -5,6 +5,9 @@
  */
 package Business.LabTest;
 
+import Business.Doctor.Doctor;
+import Business.Patient.Patient;
+
 /**
  *
  * @author jeetkhimani
@@ -13,12 +16,32 @@ public class LabTest {
     private String name;
     private String username;
     private String password;
+    private String index;
+    private Patient LabReportResults;
 
     public LabTest(String username,String password, String name) {
         this.username = username;
         this.name = name;
         this.password = password;
     }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public Patient getLabReportResults() {
+        return LabReportResults;
+    }
+
+    public void setLabResults(Patient LabResults) {
+        this.LabReportResults = LabResults;
+    }
+
+    
     
     
     public String getName() {

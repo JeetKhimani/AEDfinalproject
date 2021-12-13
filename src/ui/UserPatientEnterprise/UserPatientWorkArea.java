@@ -10,6 +10,7 @@ import Business.Doctor.Doctor;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
 import Business.Organization.PatientOrganization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
@@ -27,10 +28,9 @@ import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 public class UserPatientWorkArea extends javax.swing.JPanel {
     JPanel userProcessContainer;
     private UserAccount account;
-    private EcoSystem business;
-    
-    private UserAccount userAccount;
+    private PatientOrganization patientOrganization;
     private EcoSystem system;
+    private Enterprise enterprise;
 
     /**
      * Creates new form UserPatientWorkArea
@@ -38,9 +38,8 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
     public UserPatientWorkArea(JPanel userProcessContainer, UserAccount account, PatientOrganization patientOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        
-        this.business = business;
-        this.userAccount = account;
+        this.patientOrganization = patientOrganization;
+        this.account = account;
         this.system = ecosystem;
         populatedata();
     }
@@ -57,7 +56,6 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
@@ -80,13 +78,6 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Patient History");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
             }
         });
 
@@ -142,17 +133,14 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jButton3)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton1))
+                        .addContainerGap(329, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,31 +164,28 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addGap(294, 294, 294))
+                .addGap(329, 329, 329))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        UserPatientPersonalInfo PersonalInfo = new UserPatientPersonalInfo(userProcessContainer, account, business);
+        UserPatientPersonalInfo PersonalInfo = new UserPatientPersonalInfo(userProcessContainer, account, patientOrganization, enterprise, system);
         userProcessContainer.add("Patient Details", PersonalInfo);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        UserPatientNewCase PersonalInfo = new UserPatientNewCase(userProcessContainer, account, business);
+        UserPatientNewCase PersonalInfo = new UserPatientNewCase(userProcessContainer, account,patientOrganization, enterprise, system);
         userProcessContainer.add("Start New Case", PersonalInfo);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -218,7 +203,7 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
             return;
         }
 
-        Patient d = system.getPatientDirectory().getPatientByUserName(userAccount.getUsername());
+        Patient d = system.getPatientDirectory().getPatientByUserName(account.getUsername());
         d.setPassword(jTextField2.getText());
         d.setName(jTextField3.getText());
         JOptionPane.showMessageDialog(null, "Updated details");
@@ -226,7 +211,7 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
 
      private void populatedata() {
         
-        Patient d = system.getPatientDirectory().getPatientByUserName(userAccount.getUsername());
+        Patient d = system.getPatientDirectory().getPatientByUserName(account.getUsername());
         jTextField4.setText(d.getUsername());
         jTextField2.setText(d.getPassword());
         jTextField3.setText(d.getName());
@@ -236,7 +221,6 @@ public class UserPatientWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
