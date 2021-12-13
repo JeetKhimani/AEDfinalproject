@@ -9,9 +9,12 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.LabTest.LabTest;
 import Business.Organization.LabTestOrganization;
+import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +25,9 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
     
     private UserAccount userAccount;
     private EcoSystem system;
+    private Doctor lt;
+    private LabTest l;
+    private String a;
     /**
      * Creates new form LaboratoyWorkAreaJPanel
      */
@@ -30,6 +36,7 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         this.system = ecosystem;
         populatedata();
+        populatetable();
     }
 
     /**
@@ -46,12 +53,12 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         txtresult = new javax.swing.JTextField();
         btnsubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl1 = new javax.swing.JTable();
         btnstart = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtpatientname = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtreportname = new javax.swing.JTextField();
+        txtr = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -59,6 +66,7 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,8 +75,13 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         jLabel3.setText("Result :");
 
         btnsubmit.setText("Submit");
+        btnsubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsubmitActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -79,9 +92,14 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
                 "Patient Name", "Symptoms", "Report Name"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl1);
 
         btnstart.setText("Start");
+        btnstart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnstartActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("PatientName:");
 
@@ -93,9 +111,9 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Report Name:");
 
-        txtreportname.addActionListener(new java.awt.event.ActionListener() {
+        txtr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtreportnameActionPerformed(evt);
+                txtrActionPerformed(evt);
             }
         });
 
@@ -122,56 +140,64 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Lab Report Requests");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtresult)
-                            .addComponent(txtreportname)
-                            .addComponent(txtpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(btnsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
-                .addGap(273, 273, 273)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(273, 273, 273)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField4)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(325, 325, 325)
                         .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtresult)
+                                    .addComponent(txtr)
+                                    .addComponent(txtpatientname, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(288, 288, 288)
+                                .addComponent(btnsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(58, 58, 58))))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,9 +216,11 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdate)
-                .addGap(36, 36, 36)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnstart)
@@ -210,9 +238,9 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtreportname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(txtresult, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51)
                 .addComponent(btnsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,9 +252,9 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpatientnameActionPerformed
 
-    private void txtreportnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtreportnameActionPerformed
+    private void txtrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtreportnameActionPerformed
+    }//GEN-LAST:event_txtrActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -250,6 +278,48 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    private void btnstartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstartActionPerformed
+        // TODO add your handling code here:
+    DefaultTableModel table = (DefaultTableModel) tbl1.getModel(); 
+    int row = tbl1.getSelectedRow();
+    ArrayList<Patient> pr = system.getPatientDirectory().getPatientDirectory();
+    for(Patient p : pr){
+        String test = p.getName();
+        if(test == table.getValueAt(row , 0).toString()){
+            txtpatientname.setText(table.getValueAt(row, 0).toString());
+            txtr.setText(table.getValueAt(row, 1).toString());
+        }
+    }
+    table.removeRow(row);
+    }//GEN-LAST:event_btnstartActionPerformed
+
+    private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubmitActionPerformed
+        // TODO add your handling code here:
+        if(txtresult.getText() == null){
+            JOptionPane.showMessageDialog(this, "Lab Report Incomplete");
+        }
+        else{
+        /*
+        ArrayList<Patient> pr = system.getPatientDirectory().getPatientDirectory();
+        for(Patient p : pr){
+            if(a == txtpatientname.getText()){
+            p.setName(txtpatientname.getText());
+            p.setReport(txtr.getText());
+            p.setLabResults(txtresult.getText());
+            }
+        }
+        */
+        
+        
+        //system.getLabTestDirectory().getLabTestByUserName(userAccount.getUsername()).setLabResults(d);
+        JOptionPane.showMessageDialog(this, "Lab Report Submitted");
+        txtpatientname.setText("");
+        txtr.setText("");
+        txtresult.setText("");
+        }
+        
+    }//GEN-LAST:event_btnsubmitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdate;
@@ -259,16 +329,17 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tbl1;
     private javax.swing.JTextField txtpatientname;
-    private javax.swing.JTextField txtreportname;
+    private javax.swing.JTextField txtr;
     private javax.swing.JTextField txtresult;
     // End of variables declaration//GEN-END:variables
 
@@ -280,5 +351,22 @@ public class LaboratoryWorkAreaJPanel extends javax.swing.JPanel {
         jTextField2.setText(lt.getPassword());
         jTextField3.setText(lt.getName());
     }
+
+    private void populatetable() {
+        DefaultTableModel table = (DefaultTableModel) tbl1.getModel();
+        a = table.getValueAt(0, 0).toString();
+        table.setRowCount(0);
+        ArrayList<Doctor> doc = system.getDoctorDirectory().getDoctorDirectory();
+        for(Doctor d : doc){
+        Patient pr = system.getDoctorDirectory().getDoctorByUserName(d.getUsername()).getPatientCheck();
+        Object[] row = new Object[3];
+            row[0] = pr.getName();
+            row[1] = pr.getSymptoms();
+            row[2] = system.getDoctorDirectory().getDoctorByUserName(d.getUsername()).getLabReportName();
+            table.addRow(row);
+        }
+            
+        }
+    }
     
-}
+

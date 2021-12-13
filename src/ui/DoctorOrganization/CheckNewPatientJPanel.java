@@ -1,20 +1,50 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package ui.DoctorOrganization;
 
+import Business.Doctor.Doctor;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.DoctorOrganization;
+import Business.Patient.Patient;
+import Business.Reception.Reception;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author user
+ * @author jeetkhimani
  */
 public class CheckNewPatientJPanel extends javax.swing.JPanel {
 
+    
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private EcoSystem system;
+    private ArrayList<Patient> patientinfo = new ArrayList<>();
+    private DoctorOrganization docorg;
+    private Enterprise enterprise;
+    private Doctor d;
     /**
      * Creates new form CheckNewPatientJPanel
      */
-    public CheckNewPatientJPanel() {
+    public CheckNewPatientJPanel(JPanel userProcessContainer, UserAccount account, DoctorOrganization DoctorOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.system = ecosystem;
+        this.docorg = DoctorOrganization;
+        this.enterprise = enterprise;
+        populatetable();
     }
 
     /**
@@ -26,72 +56,128 @@ public class CheckNewPatientJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnPatientPersonalInfoBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl1 = new javax.swing.JTable();
+        CB2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("New Patient Work Area");
+        btnPatientPersonalInfoBack.setText("<< Back");
+        btnPatientPersonalInfoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatientPersonalInfoBackActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Patient Name", "Symptoms", "Status", "Comments"
+                "Patient Name ", "Symptoms"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl1);
 
-        jButton1.setText("Send to Laboratory");
+        CB2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "X-Ray", "MRI", "CT-Scan", "BloodTest" }));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "X-Ray", "MRI", "CT-Scan", "BloodTests" }));
+        jButton1.setText("Send to LAB");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(btnPatientPersonalInfoBack)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jButton1)
-                .addGap(137, 137, 137))
+                .addContainerGap(184, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(CB2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(jButton1)
+                        .addGap(181, 181, 181))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(492, Short.MAX_VALUE))
+                    .addComponent(CB2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addComponent(btnPatientPersonalInfoBack)
+                .addGap(311, 311, 311))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPatientPersonalInfoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPersonalInfoBackActionPerformed
+        // TODO add your handling code here:
+
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DoctorWorkAreaJPanel dwajp = (DoctorWorkAreaJPanel) component;
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+
+    }//GEN-LAST:event_btnPatientPersonalInfoBackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int row = tbl1.getSelectedRow();
+        String index = CB2.getSelectedItem().toString();
+        system.getDoctorDirectory().getDoctorByUserName(userAccount.getUsername()).setLabReportName(index);
+        JOptionPane.showMessageDialog(null, "Sent for lab reports");
+        DefaultTableModel table = (DefaultTableModel) tbl1.getModel();
+        table.removeRow(row);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB2;
+    private javax.swing.JButton btnPatientPersonalInfoBack;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl1;
     // End of variables declaration//GEN-END:variables
+
+
+private void populatetable() {
+        
+    
+        
+        DefaultTableModel table = (DefaultTableModel) tbl1.getModel();
+        table.setRowCount(0);
+        Patient p = system.getDoctorDirectory().getDoctorByUserName(userAccount.getUsername()).getPatientCheck();
+        
+            Object[] row = new Object[4];
+            row[0] = p.getName();
+            row[1] = p.getSymptoms();
+            table.addRow(row);
+            
+        }
+        
 }
+    
+
+
+
+

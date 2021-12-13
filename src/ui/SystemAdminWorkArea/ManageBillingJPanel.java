@@ -13,6 +13,9 @@ import Business.Role.DoctorRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +37,7 @@ public class ManageBillingJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = system;
         populatebillingtable();
+        dispimg();
     }
 
     /**
@@ -55,6 +59,10 @@ public class ManageBillingJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(null);
 
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -62,12 +70,26 @@ public class ManageBillingJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2);
+        jButton2.setBounds(1212, 709, 75, 29);
 
         jLabel1.setText("Name:");
+        add(jLabel1);
+        jLabel1.setBounds(610, 490, 40, 16);
 
         jLabel2.setText("UserName:");
+        add(jLabel2);
+        jLabel2.setBounds(580, 520, 68, 16);
 
         jLabel3.setText("Password:");
+        add(jLabel3);
+        jLabel3.setBounds(590, 560, 63, 16);
+        add(txtName);
+        txtName.setBounds(670, 480, 104, 26);
+        add(txtUsername);
+        txtUsername.setBounds(670, 520, 104, 26);
+        add(txtPassword);
+        txtPassword.setBounds(670, 560, 104, 26);
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +97,8 @@ public class ManageBillingJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1);
+        jButton1.setBounds(640, 600, 88, 29);
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,58 +113,29 @@ public class ManageBillingJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(table1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jButton2)
-                .addContainerGap(678, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton1)))
-                .addGap(287, 287, 287))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(63, 63, 63)
-                .addComponent(jButton2)
-                .addContainerGap(359, Short.MAX_VALUE))
-        );
+        add(jScrollPane1);
+        jScrollPane1.setBounds(280, 300, 785, 165);
+        add(jLabel4);
+        jLabel4.setBounds(450, 0, 350, 300);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void dispimg(){
+        scaleIcon(350,300,"src/images/ins.jpeg", jLabel4);
+    }
+    
+    public void scaleIcon(int Width, int Height, String imgPath, javax.swing.JLabel jLabel){
+        File file = new File(imgPath);
+        String absolutePath = file.getAbsolutePath();
+        ImageIcon img = new ImageIcon(absolutePath);
+        System.out.println(absolutePath);
+        Image icon = img.getImage();
+        icon = icon.getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
+        img = new ImageIcon(icon);
+        jLabel.setIcon(img);
+        jLabel.setText("");
+       
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
@@ -193,6 +188,7 @@ public class ManageBillingJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table1;
     private javax.swing.JTextField txtName;

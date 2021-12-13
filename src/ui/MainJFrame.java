@@ -11,6 +11,9 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -30,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setSize(1450, 800);
+        dispimg();
     }
 
     /**
@@ -51,7 +55,7 @@ public class MainJFrame extends javax.swing.JFrame {
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
         container = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,15 +118,15 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(logoutJButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginJLabel)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(547, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
 
         container.setLayout(new java.awt.CardLayout());
 
-        jLabel3.setText("IMAGE");
-        container.add(jLabel3, "card2");
+        jLabel4.setText("jLabel4");
+        container.add(jLabel4, "card2");
 
         jSplitPane1.setRightComponent(container);
 
@@ -130,7 +134,25 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void dispimg(){
+        scaleIcon(1450, 800,"src/images/mainpanel.png", jLabel4);
+    }
+    
+    public void scaleIcon(int Width, int Height, String imgPath, javax.swing.JLabel jLabel){
+        File file = new File(imgPath);
+        String absolutePath = file.getAbsolutePath();
+        ImageIcon img = new ImageIcon(absolutePath);
+        System.out.println(absolutePath);
+        Image icon = img.getImage();
+        icon = icon.getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
+        img = new ImageIcon(icon);
+        jLabel.setIcon(img);
+        jLabel.setText("");
+       
+    }
+    
+    
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
         // Get user name
         String userName = userNameJTextField.getText();
@@ -247,7 +269,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginJButton;
