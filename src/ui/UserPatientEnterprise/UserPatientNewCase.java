@@ -6,11 +6,14 @@
 package ui.UserPatientEnterprise;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.PatientOrganization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,9 +21,11 @@ import javax.swing.JPanel;
  * @author hetgerrard08
  */
 public class UserPatientNewCase extends javax.swing.JPanel {
+    
+    
     JPanel userProcessContainer;
     private UserAccount account;
-    private EcoSystem business;
+    private EcoSystem system;
     private ArrayList<Patient> pat = new ArrayList<>();
     private Patient patient;
 
@@ -28,11 +33,11 @@ public class UserPatientNewCase extends javax.swing.JPanel {
     /**
      * Creates new form UserPatientNewCase
      */
-    public UserPatientNewCase(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public UserPatientNewCase(JPanel userProcessContainer, UserAccount account, PatientOrganization patientOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.business = business;
+        this.system = ecosystem;
     }
 
     /**
@@ -60,6 +65,11 @@ public class UserPatientNewCase extends javax.swing.JPanel {
         lblDate.setText("Date:");
 
         btnSubmit.setText("SUBMIT");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnPatientNewCaseBack.setText("<< Back");
         btnPatientNewCaseBack.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +132,20 @@ public class UserPatientNewCase extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnPatientNewCaseBackActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        
+        Patient p = system.getPatientDirectory().getPatientByUserName(account.getUsername());
+        p.setSymptoms(txtSymptoms.getText());
+        p.setDate(txtDate.getText());
+        JOptionPane.showMessageDialog(null, "Case Started");
+        system.getPatientDirectory().getPatientByUserName(account.getUsername()).setSymptoms(txtSymptoms.getText());
+        system.getPatientDirectory().getPatientByUserName(account.getUsername()).setDate(txtDate.getText());
+        txtSymptoms.setText("");
+        txtDate.setText("");
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

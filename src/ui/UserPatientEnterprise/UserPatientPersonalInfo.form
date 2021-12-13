@@ -39,7 +39,7 @@
                           <Component id="btnMale" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAge" linkSize="1" min="-2" pref="140" max="-2" attributes="0"/>
                           <Component id="txtName" linkSize="1" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Component id="txtContactNo" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="txtContact" min="-2" pref="140" max="-2" attributes="0"/>
                           <Component id="txtAddress" linkSize="1" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -74,7 +74,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblContactNo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtContactNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtContact" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -128,9 +128,9 @@
         <Property name="text" type="java.lang.String" value="Contact No:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtContactNo">
+    <Component class="javax.swing.JTextField" name="txtContact">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContactNoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContactActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblGender">
@@ -158,6 +158,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="SUBMIT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPatientPersonalInfoBack">
       <Properties>

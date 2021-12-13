@@ -6,13 +6,15 @@
 package ui.UserPatientEnterprise;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.PatientOrganization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import ui.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -22,18 +24,19 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     private UserAccount account;
-    private EcoSystem business;
+    private EcoSystem system;
     private ArrayList<Patient> pat = new ArrayList<>();
     private Patient patient;
 
     /**
      * Creates new form UserPatientPersonalInfo
      */
-    public UserPatientPersonalInfo(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public UserPatientPersonalInfo(JPanel userProcessContainer, UserAccount account, PatientOrganization patientOrganization, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
-        this.business = business;
+        this.system = ecosystem;
+        populatedata();
         
     }
 
@@ -57,7 +60,7 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
         lblAddress = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         lblContactNo = new javax.swing.JLabel();
-        txtContactNo = new javax.swing.JTextField();
+        txtContact = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
         btnMale = new javax.swing.JRadioButton();
         btnFemale = new javax.swing.JRadioButton();
@@ -81,9 +84,9 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
 
         lblContactNo.setText("Contact No:");
 
-        txtContactNo.addActionListener(new java.awt.event.ActionListener() {
+        txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContactNoActionPerformed(evt);
+                txtContactActionPerformed(evt);
             }
         });
 
@@ -96,6 +99,11 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
         btnFemale.setText("Female");
 
         btnSubmit.setText("SUBMIT");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnPatientPersonalInfoBack.setText("<< Back");
         btnPatientPersonalInfoBack.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +134,7 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
                             .addComponent(btnMale)
                             .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -155,7 +163,7 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContactNo)
-                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender)
@@ -177,9 +185,9 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
 
-    private void txtContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactNoActionPerformed
+    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContactNoActionPerformed
+    }//GEN-LAST:event_txtContactActionPerformed
 
     private void btnPatientPersonalInfoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPersonalInfoBackActionPerformed
         // TODO add your handling code here:
@@ -193,6 +201,39 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
 
     
     }//GEN-LAST:event_btnPatientPersonalInfoBackActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+        
+        if (txtName.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Name Missing");
+            return;
+        }
+        if (txtAge.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Age Missing");
+            return;
+        }
+        if (txtAddress.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Adress Missing");
+            return;
+        }
+        if (txtContact.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Contact Missing");
+            return;
+        }
+        Patient p = system.getPatientDirectory().getPatientByUserName(account.getUsername());
+        p.setName(txtName.getText());
+        p.setAddress(txtAddress.getText());
+        p.setAge(txtAge.getText());
+        p.setContact(txtContact.getText());
+        JOptionPane.showMessageDialog(null, "Updated details");
+        
+        system.getPatientDirectory().getPatientByUserName(account.getUsername()).setAge(txtAge.getText());
+        system.getPatientDirectory().getPatientByUserName(account.getUsername()).setName(txtName.getText());
+        system.getPatientDirectory().getPatientByUserName(account.getUsername()).setAddress(txtAddress.getText());
+        system.getPatientDirectory().getPatientByUserName(account.getUsername()).setContact(txtContact.getText());
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,7 +250,15 @@ public class UserPatientPersonalInfo extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtContactNo;
+    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+
+    public void populatedata() {
+        Patient p = system.getPatientDirectory().getPatientByUserName(account.getUsername());
+        txtAge.setText(p.getAge());
+        txtName.setText(p.getName());
+        txtAddress.setText(p.getAddress());
+        txtContact.setText(p.getContact());        
+    }
 }

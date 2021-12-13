@@ -8,12 +8,17 @@ package ui.ReceptionOrganization;
 import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.LabTest.LabTest;
+import Business.Network.Network;
 import Business.Organization.ReceptionOrganization;
+import Business.Patient.Patient;
+import Business.Patient.PatientDirectory;
 import Business.Reception.Reception;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,6 +32,12 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private UserAccount userAccount;
     private EcoSystem system;
+    private ArrayList<Patient> patientinfo = new ArrayList<>();
+    private Patient patient1;
+    private ArrayList<Doctor> doclist = new ArrayList<>();
+    private Reception r;
+    private Doctor dnew;
+    
     
 
     public ReceptionWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ReceptionOrganization receptionOrganization, Enterprise enterprise, EcoSystem ecosystem) {
@@ -34,7 +45,10 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.system = ecosystem;
         this.userAccount = account;
+        
         populatedata();
+        populatetable();
+        populatecombobox();
     }
 
     /**
@@ -48,9 +62,9 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableReceptionWorkArea = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CB1 = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -63,7 +77,7 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Reception");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableReceptionWorkArea.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,16 +88,16 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
                 "Patient Name", "Symptoms", "Date", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableReceptionWorkArea);
 
         jButton1.setText("Assign Doctor");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor Name" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+
+        CB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor Name" }));
 
         btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
@@ -121,7 +135,7 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(173, 173, 173)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(CB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton1))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -170,14 +184,10 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(332, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -201,21 +211,46 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        int row = tableReceptionWorkArea.getSelectedRow();
+        Patient p = patientinfo.get(row);
+        String index = CB1.getSelectedItem().toString();
+        system.getDoctorDirectory().getDoctorByUserName(index).setPatientCheck(p);
+        DefaultTableModel table = (DefaultTableModel) tableReceptionWorkArea.getModel();
+        table.removeRow(row);
+        
+        /*
+        for (Doctor d : doclist) {
+            if (d.getName().equals(CB1.getSelectedItem())) {
+                r.setAssigndoc(d);
+                //d.setAvailable(false);
+                //d.setOrderStatus("Assigned to Delivery Boy");
+                
+                dnew.setPatientCheck(patient1);
+            }
+        }
+        */
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+       
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CB1;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tableReceptionWorkArea;
     // End of variables declaration//GEN-END:variables
 
 
@@ -225,6 +260,37 @@ public class ReceptionWorkAreaJPanel extends javax.swing.JPanel {
         jTextField4.setText(r.getUsername());
         jTextField2.setText(r.getPassword());
         jTextField3.setText(r.getName());
+    }
+
+    private void populatetable() {
+        
+        String index = CB1.getSelectedItem().toString();
+        DefaultTableModel table = (DefaultTableModel) tableReceptionWorkArea.getModel();
+        patientinfo = system.getPatientDirectory().getPatientDirectory();
+        table.setRowCount(0);
+        for (Patient p : system.getPatientDirectory().getPatientDirectory()) {
+            Object[] row = new Object[4];
+            row[0] = p.getName();
+            row[1] = p.getSymptoms();
+            row[2] = p.getDate();
+            if(row[1] == null){
+                row[3] = "Not applicable";
+            }
+            else{
+                row[3] = "Pending case";
+            }
+            table.addRow(row);
+            
+        } 
+    }
+
+    private void populatecombobox() {
+        
+        ArrayList<Doctor> doc = system.getDoctorDirectory().getDoctorDirectory();
+        CB1.removeAllItems();;
+        for(Doctor d : doc){
+            CB1.addItem(d.getUsername());   
+        }
     }
     
 }

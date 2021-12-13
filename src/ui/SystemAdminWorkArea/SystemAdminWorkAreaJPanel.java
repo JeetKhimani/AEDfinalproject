@@ -10,7 +10,10 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -31,7 +34,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
         //populateTree();
+        dispimg();
     }
+    
     /*
     public void populateTree(){
         //DefaultTreeModel model=(DefaultTreeModel)jTree.getModel();
@@ -96,6 +101,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNetwork3 = new javax.swing.JButton();
         btnManageNetwork4 = new javax.swing.JButton();
         btnManageNetwork5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -107,12 +113,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 796, Short.MAX_VALUE)
         );
 
         jSplitPane.setLeftComponent(jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
 
         btnManageNetwork.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork.setText("Manage Doctor");
@@ -121,6 +128,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetworkActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageNetwork);
+        btnManageNetwork.setBounds(561, 424, 219, 29);
 
         btnManageEnterprise.setBackground(new java.awt.Color(255, 255, 255));
         btnManageEnterprise.setText("Manage User");
@@ -129,6 +138,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageEnterpriseActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageEnterprise);
+        btnManageEnterprise.setBounds(561, 494, 219, 29);
 
         btnManageAdmin.setBackground(new java.awt.Color(255, 255, 255));
         btnManageAdmin.setText("Manage Pharmacy");
@@ -137,6 +148,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageAdminActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageAdmin);
+        btnManageAdmin.setBounds(561, 529, 219, 29);
 
         btnManageAdmin1.setBackground(new java.awt.Color(255, 255, 255));
         btnManageAdmin1.setText("Manage Pharmacy Inventory");
@@ -145,6 +158,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageAdmin1ActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageAdmin1);
+        btnManageAdmin1.setBounds(561, 564, 219, 29);
 
         btnManageNetwork1.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork1.setText("Manage Laboratory Tests");
@@ -153,6 +168,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetwork1ActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageNetwork1);
+        btnManageNetwork1.setBounds(561, 459, 219, 29);
 
         btnManageNetwork2.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork2.setText("Manage Reception");
@@ -161,6 +178,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetwork2ActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageNetwork2);
+        btnManageNetwork2.setBounds(561, 389, 219, 29);
 
         btnManageNetwork3.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork3.setText("Manage Insurance Office");
@@ -169,6 +188,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetwork3ActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageNetwork3);
+        btnManageNetwork3.setBounds(561, 599, 219, 29);
 
         btnManageNetwork4.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork4.setText("Manage Billing");
@@ -177,6 +198,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetwork4ActionPerformed(evt);
             }
         });
+        jPanel2.add(btnManageNetwork4);
+        btnManageNetwork4.setBounds(561, 634, 219, 29);
 
         btnManageNetwork5.setBackground(new java.awt.Color(255, 255, 255));
         btnManageNetwork5.setText("Manage Laboratory Reports");
@@ -185,54 +208,34 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageNetwork5ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManageAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageAdmin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageNetwork2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(361, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(btnManageNetwork2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageNetwork)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageNetwork1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageEnterprise)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageAdmin1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageNetwork3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageNetwork4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnManageNetwork5)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        jPanel2.add(btnManageNetwork5);
+        btnManageNetwork5.setBounds(561, 669, 219, 29);
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(-3, 0, 1450, 380);
 
         jSplitPane.setRightComponent(jPanel2);
 
         add(jSplitPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
+        
+    private void dispimg(){
+        scaleIcon(1290,380,"src/images/sysadmin.png", jLabel1);
+    }
+    
+    public void scaleIcon(int Width, int Height, String imgPath, javax.swing.JLabel jLabel){
+        File file = new File(imgPath);
+        String absolutePath = file.getAbsolutePath();
+        ImageIcon img = new ImageIcon(absolutePath);
+        System.out.println(absolutePath);
+        Image icon = img.getImage();
+        icon = icon.getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
+        img = new ImageIcon(icon);
+        jLabel.setIcon(img);
+        jLabel.setText("");
+       
+    }
+    
+        
     private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
         ManageDoctorJPanel managedoctorJPanel=new ManageDoctorJPanel(userProcessContainer, ecosystem);
         userProcessContainer.add("manageNetworkJPanel",managedoctorJPanel);
@@ -325,6 +328,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageNetwork3;
     private javax.swing.JButton btnManageNetwork4;
     private javax.swing.JButton btnManageNetwork5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane;

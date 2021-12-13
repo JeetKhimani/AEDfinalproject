@@ -16,6 +16,7 @@ public class DoctorDirectory {
     
     private ArrayList<Doctor> DoctorDirectory = new ArrayList<>();
     private Doctor doctor;
+    private String[] DoctorList;
     
     public DoctorDirectory(){
         DoctorDirectory = new ArrayList<>();
@@ -30,6 +31,16 @@ public class DoctorDirectory {
     public ArrayList<Doctor> getDoctorDirectory() {
         return DoctorDirectory;
     }
+
+    public String[] getDoctorList() {
+        return DoctorList;
+    }
+
+    public void setDoctorList(String[] DoctorList) {
+        this.DoctorList = DoctorList;
+    }
+    
+    
     
     public Doctor getDoctorByUserName(String username){
         for(Doctor d: DoctorDirectory){
